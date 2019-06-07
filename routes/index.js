@@ -4,9 +4,11 @@ const fs = require('fs');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' },);
+  res.render('index', { title: 'Shortlinker' });
 });
+
 shortlink_json = __dirname+'\\shortlinks.json';
+
 module.exports = router;
 
 //General sites
