@@ -69,7 +69,9 @@ router.post('/process', function(req,res){
     }
   })
 })
-
+router.get('/short-list', function(req, res){
+  res.send(JSON.stringify(shortfile));
+})
 router.get('/:nam',function(req,res){
   res.redirect(shortfile[req.params['nam']])
 })
