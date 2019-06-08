@@ -36,14 +36,16 @@ fs.readFile(shortlink_json, function(err, data){
 */
 
 router.get('/dashboard', function(req, res){
-  fs.readFile(__dirname+"/newgg.txt", function(err,data){
+    fs.readFile(__dirname+"/newgg.txt", function(err,data){
     if(err){
       console.log(err);
     }
     else{
       res.write(data);
+      res.end();
     }
-  })
+  }) 
+/*  res.redirect('/dashboard.html'); */
 });
 
 router.post('/process', function(req,res){
