@@ -36,20 +36,28 @@ fs.readFile(shortlink_json, function(err, data){
 */
 
 router.get('/dashboard', function(req, res) {
+  console.log(req.query.pass);
   fs.readFile(__dirname + '/newgg.txt', function(err, data) {
     if (err) {
-      console.log(err)
+      console.log(err);
     } else {
-      res.write(data)
-      res.end()
+      if(req.query.pass === "neathotdamn"){
+        res.write(data);
+        res.end();
+      } else{
+        res.redirect('/incorrect');
+      }
+      
     }
   })
   /*  res.redirect('/dashboard.html'); */
 })
-
+router.get('/incorrect', function(req,res){
+  res.send('Incorrect password. Travel <a href="/">home</a>.')
+})
 router.post('/process', function(req, res) {
   //  console.log(req.body);
-  parsedBody = req.body
+  parsedBody = req.body;
 
   fs.readFile(shortlink_json, function(err, data) {
     if (err) {
@@ -61,8 +69,7 @@ router.post('/process', function(req, res) {
       redirect = parsedBody.link[1]
       console.log(short + ' redirects to: ' + redirect)
       jsonData[short] = redirect
-      jsonDataWrite = JSON.stringify(jsonData)
-      console.log(jsonDataWrite)
+      jsonDataWrite = JSON.stringify(jsonData);
       fs.writeFile(shortlink_json, jsonDataWrite, function(err) {
         console.log(err)
       })
