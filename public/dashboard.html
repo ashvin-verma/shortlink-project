@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Dashboard- Shortlinker</title>
     <style>
-        button{
-            width: 10vw;
-            font-size: 1.25rem;
-            height: 5vh;
-            margin-top: 10vh;
-        }
-        form{
-            padding-left:10vw;
-            padding-right:10vw;
-            text-align: center;
-            padding-top: 10vh;
-        }
-        div.entry{
-            padding-top: 5vh;
-        }
-        label{
-            padding-right: 1vw;
-        }
+      button {
+        width: 10vw;
+        font-size: 1.25rem;
+        height: 5vh;
+        margin-top: 10vh;
+      }
+      form {
+        padding-left: 10vw;
+        padding-right: 10vw;
+        text-align: center;
+        padding-top: 10vh;
+      }
+      div.entry {
+        padding-top: 5vh;
+      }
+      label {
+        padding-right: 1vw;
+      }
     </style>
-</head>
-<body style="font-family:montserrat;">
-<h1 style="text-align:center;font-family:Ubuntu;">Dashboard</h1>
-<form action="/process" method="post">
-  <div class="entry">
-    <label for="link" >Redirecting from \:</label>
-    <input name="link" id="link" value="">
-  </div>
-  <div class="entry">
-    <label for="redirect">Redirect to</label>
-    <input name="link" id="link" value="">
-  </div>
-  <div>
-	<button><span style="font-family:Montserrat">Create shortlink!</span></button>
-  </div>
-</form>
-</body>
-
+  </head>
+  <body style="font-family:montserrat;">
+    <h1 style="text-align:center;font-family:Ubuntu;">Dashboard</h1>
+    <form action="/process" method="post">
+      <div class="entry">
+        <label for="link">Redirecting from \:</label>
+        <input name="link" id="link" value="" />
+      </div>
+      <div class="entry">
+        <label for="redirect">Redirect to</label>
+        <input name="link" id="link" value="" />
+      </div>
+      <div>
+        <button>
+          <span style="font-family:Montserrat">Create shortlink!</span>
+        </button>
+      </div>
+    </form>
+  </body>
 </html>
