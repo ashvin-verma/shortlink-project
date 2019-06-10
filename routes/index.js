@@ -7,39 +7,22 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Shortlinker' })
 })
 
+// Shortlink Database Path
 shortlink_json = __dirname + '\\shortlinks.json'
 
+//Export file as module
 module.exports = router
 
-//General sites
-/*
-router.get('/reddit', function(req, res){
-  res.redirect('http://reddit.com');
-});
-*/
+//Read the Shortlink Storage JSON
 var shortfile = fs.readFileSync(shortlink_json, 'utf-8')
 shortfile = JSON.parse(shortfile)
-/*
-fs.readFile(shortlink_json, function(err, data){
-  if(err){
-      console.log(err);
-  }
-  else{var stringo = data.toString();
-    var oba = JSON.parse(stringo);  
-    for(i in oba){
-      router.get(i, function(req,res){
-        console.log(oba[i]);
-      })      
-    };
-  }
-});
-*/
 
+// GET Shortlink Dashboard
 router.get('/dashboard', function(req, res) {
   console.log(req.query.pass);
   fs.readFile(__dirname + '/newgg.txt', function(err, data) {
     if (err) {
-      console.log(err);
+      console.log(err); // Using URL-based Query for verifying password
     } else {
       if(req.query.pass === "neathotdamn"){
         res.write(data);
@@ -50,11 +33,14 @@ router.get('/dashboard', function(req, res) {
       
     }
   })
-  /*  res.redirect('/dashboard.html'); */
 })
+
+// GET Incorrect Password page
 router.get('/incorrect', function(req,res){
   res.send('Incorrect password. Travel <a href="/">home</a>.')
 })
+
+//POST to Processing Route, which edits JSON file
 router.post('/process', function(req, res) {
   //  console.log(req.body);
   parsedBody = req.body;
@@ -77,27 +63,22 @@ router.post('/process', function(req, res) {
     }
   })
 })
+
+//GET Output of JSON file with shortlink-redirect pairs
 router.get('/short-list', function(req, res) {
   res.send(JSON.stringify(shortfile))
 })
+
+//GET for various shortlinks
 router.get('/:nam', function(req, res) {
   res.redirect(shortfile[req.params['nam']])
 })
-/*
-for(i in oba){
-  router.get(i, function(req,res){
-    console.log(i);
-    res.redirect(oba[i]);
-    console.log(oba[i]);
-  })      
-};
-*/
-//Aeross websites
-/*
-router.get('/aeross/website', function(req, res){
-  res.redirect('http://aeross.org');
+
+router.get('/gg', function(req,res){
+  console.log(req);
+  res.send('Incorrect password. Travel <a href="/">home</a>.')
+});
+
+router.get('/temp', function(req,res){
+  console.log(req.query);
 })
-router.get('/aeross/spacey/ARResub', function(req, res){
-  res.redirect("https://drive.google.com/file/d/1is6xNZRDuljVzQDAPA5CBpe7wEnNneDa/view?usp=sharing");
-})
-*/
