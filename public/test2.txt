@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dashboard- Shortlinker</title>
+    <title>Login- Shortlinker</title>
     <style>
       button {
         width: 15rem;
@@ -52,18 +52,14 @@ div#unique{
     </style>
   </head>
   <body style="font-family:montserrat;">
-    <h1 style="text-align:center;font-family:Ubuntu;">Dashboard</h1>
-    <form action="/process" method="post">
+    <h1 style="text-align:center;font-family:Ubuntu;">Login</h1>
+    <form action="/dashboard" method="get">
       <div class="entry" id="unique">
-        <label for="link">Redirecting from \:</label>
-        <input name="link" id="link" value="" />
-      </div>
-      <div class="entry">
-        <label for="redirect">Redirect to</label>
-        <input name="link" id="link" value="" />
+        <label for="pass">Enter Password</label>
+        <input name="pass" id="pass" value="pass" />
       </div>
       <div>
-        <button>
+        <button type="pass">
           <span style="font-family:Montserrat">Create shortlink!</span>
         </button>
       </div>

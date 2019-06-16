@@ -17,6 +17,17 @@ module.exports = router
 var shortfile = fs.readFileSync(shortlink_json, 'utf-8')
 shortfile = JSON.parse(shortfile)
 
+router.get('/login', function(req,res){
+  fs.readFile(__dirname + '/../public/test2.txt', function(err, data) {
+    if (err) {
+      console.log(err); // Using URL-based Query for verifying password
+    } else {
+      res.write(data);
+      res.end()
+    }
+  })
+})
+
 // GET Shortlink Dashboard
 router.get('/dashboard', function(req, res) {
   console.log(req.query.pass);
@@ -28,16 +39,11 @@ router.get('/dashboard', function(req, res) {
         res.write(data);
         res.end();
       } else{
-        res.redirect('/incorrect');
+        res.redirect('/login');
       }
       
     }
   })
-})
-
-// GET Incorrect Password page
-router.get('/incorrect', function(req,res){
-  res.send('Incorrect password. Travel <a href="/">home</a>.')
 })
 
 //POST to Processing Route, which edits JSON file
@@ -59,7 +65,7 @@ router.post('/process', function(req, res) {
       fs.writeFile(shortlink_json, jsonDataWrite, function(err) {
         console.log(err)
       })
-      res.redirect('/dashboard')
+      res.redirect('/dashboard?pass=neathotdamn')
     }
   })
 })
@@ -74,11 +80,8 @@ router.get('/:nam', function(req, res) {
   res.redirect(shortfile[req.params['nam']])
 })
 
-router.get('/gg', function(req,res){
-  console.log(req);
-  res.send('Incorrect password. Travel <a href="/">home</a>.')
-});
-
+/*
 router.get('/temp', function(req,res){
   console.log(req.query);
 })
+*/
