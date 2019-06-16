@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const fs = require('fs')
+var cool = require('cool-ascii-faces')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -17,6 +18,9 @@ module.exports = router
 var shortfile = fs.readFileSync(shortlink_json, 'utf-8')
 shortfile = JSON.parse(shortfile)
 
+router.get('/cool',function(req, res){
+  res.render(cool());
+})
 router.get('/login', function(req,res){
   fs.readFile(__dirname + '/../public/test2.txt', function(err, data) {
     if (err) {
