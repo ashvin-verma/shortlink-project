@@ -23,7 +23,7 @@ router.get('/cool',function(req, res){
 })
 router.get('/login', function(req,res){
   fs.readFile(__dirname + '/../public/test2.txt', function(err, data) {
-    if (err) {
+     if (err) {
       console.log(err); // Using URL-based Query for verifying password
     } else {
       res.write(data);
