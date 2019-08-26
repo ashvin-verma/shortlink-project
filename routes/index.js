@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 })
 
 // Shortlink Database Path
-shortlink_json = __dirname + '\\shortlinks.json'
+shortlink_json = __dirname + '/shortlinks.json'
 
 //Export file as module
 module.exports = router

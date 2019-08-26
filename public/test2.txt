@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Login- Shortlinker</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap" rel="stylesheet">
     <style>
       button {
         width: 15rem;
@@ -60,7 +61,7 @@ div#unique{
       </div>
       <div>
         <button type="pass">
-          <span style="font-family:Montserrat">Create shortlink!</span>
+          <span style="font-family:Montserrat">Submit</span>
         </button>
       </div>
     </form>
