@@ -1,8 +1,8 @@
-# Shortlinker
+# Shortlinker [DEPRECATED]
 
 ## Implementation
 
-Written in node & express.
+Written in node & express. Unnecessarily complicated, I was just starting out.
 
 ## Functionality
 
