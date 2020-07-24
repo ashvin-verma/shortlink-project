@@ -2,10 +2,13 @@ var express = require('express')
 var router = express.Router()
 const fs = require('fs')
 var cool = require('cool-ascii-faces')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Shortlinker' })
+  res.render('index', { title: 'Ashvin\'s personal shortlinker' })
 })
 
 // Shortlink Database Path
@@ -17,6 +20,8 @@ module.exports = router
 //Read the Shortlink Storage JSON
 var shortfile = fs.readFileSync(shortlink_json, 'utf-8')
 shortfile = JSON.parse(shortfile)
+
+truepass = process.env.DASHPASS;
 
 router.get('/cool',function(req, res){
   res.render(cool());
@@ -39,7 +44,7 @@ router.get('/dashboard', function(req, res) {
     if (err) {
       console.log(err); // Using URL-based Query for verifying password
     } else {
-      if(req.query.pass === "neathotdamn"){
+      if(req.query.pass === truepass){
         res.write(data);
         res.end();
       } else{
@@ -69,7 +74,7 @@ router.post('/process', function(req, res) {
       fs.writeFile(shortlink_json, jsonDataWrite, function(err) {
         console.log(err)
       })
-      res.redirect('/dashboard?pass=neathotdamn')
+      res.redirect('/dashboard?pass='+truepass)
     }
   })
 })
